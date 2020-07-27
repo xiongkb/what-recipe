@@ -1,0 +1,25 @@
+.brand-name {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 50%;
+}
+.logo {
+    width: 90px;
+}
+.brand-logo {
+    font-size: 58px;
+    font-weight: 200;
+    position: absolute;
+    top: 8px;
+}
+.nav-list {
+    font-size: 24px;
+    float: right;
+}
+.nav-item {
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 10px;
+}
