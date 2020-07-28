@@ -11,11 +11,10 @@ class Navbar extends Component {
                         <img className="logo" alt="What Recipe's logo" src={logo} />
                         <span className="brand-logo">What Recipe!?</span>
                     </div>
-                    <ul className="nav-list">
-                        <li className="nav-item">Sign Up</li>
-                        <li className="nav-item">Log In</li>
-                        <li className="nav-item">Contact</li>
-                    </ul>
+                    <div className="nav-list">
+                        <div className="nav-item" onClick={() => window.location = '/'}>Sign Up</div>
+                        <div className="nav-item" onClick={() => window.location = '/'}>Log In</div>
+                    </div>
                 </nav>
             </div>
         )

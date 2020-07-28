@@ -1,3 +1,7 @@
+.navbar {
+    height: 110px;
+    width: 100%;
+}
 .brand-name {
     display: inline-block;
     position: relative;
@@ -16,10 +20,32 @@
 }
 .nav-list {
     font-size: 24px;
+    font-weight: 200;
     float: right;
 }
 .nav-item {
     display: inline-block;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.nav-list div:hover,
+.nav-list div:active {
+    border-bottom: 2px solid #FF8801;
+    transition: border-bottom 0.1s;
+}
+.nav-list div:hover,
+.nav-list div:after {
+    font-size: 36px;
+    margin-top: 0;
+    /* margin-right: 19px; */
+}
+
+.nav-list .nav-item:first-child {
+    width: 124.5px;
+    margin-right: 25px;
+}
+
+.nav-list .nav-item:last-child {
+    width: 95.95px;
     margin-right: 50px;
-    margin-top: 10px;
 }
