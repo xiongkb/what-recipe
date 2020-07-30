@@ -12,8 +12,8 @@ class Navbar extends Component {
                         <span className="brand-logo">What Recipe!?</span>
                     </div>
                     <div className="nav-list">
-                        <div className="nav-item" onClick={() => window.location = '/'}>Sign Up</div>
-                        <div className="nav-item" onClick={() => window.location = '/'}>Log In</div>
+                        <div className="nav-item" onClick={() => window.location = '/signup'}>Sign Up </div>
+                        <div className="nav-item" onClick={() => window.location = '/login'}>Log In </div>
                     </div>
                 </nav>
             </div>

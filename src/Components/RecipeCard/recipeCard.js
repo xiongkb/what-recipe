@@ -5,9 +5,7 @@ class RecipeCard extends Component {
     render() {
         return (
             <div>
-                <header>Recipe Name</header>
-                <div>Img to be here</div>
-                <div>Info here</div>
+                <p>Card for recipe will show here</p>
             </div>
         )
     }
