@@ -1,0 +1,12 @@
+.footer {
+    width: 100%;
+    position: fixed;
+    border-top: #FF8801 2px solid;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+}
+#edamam-badge {
+    float: right;
+    margin-right: 20px;
+}

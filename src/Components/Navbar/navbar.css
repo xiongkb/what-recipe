@@ -1,6 +1,10 @@
 .navbar {
     height: 110px;
     width: 100%;
+    border-bottom: #FF8801 2px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 .brand-name {
     display: inline-block;

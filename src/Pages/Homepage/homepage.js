@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Navbar from "../../Components/Navbar/navbar";
 import RecipeCard from "../../Components/RecipeCard/recipeCard";
 import Pot from '../../Components/Pot/pot';
+import Footer from '../../Components/Footer/footer';
+
+import "./homepage.css"
 
 class Homepage extends Component {
     // constructor prop to set the state of the ingredients that will update the user's input
@@ -12,6 +16,13 @@ class Homepage extends Component {
 
     text = '';    // user's text
 
+    componentDidMount()  {
+        axios.get('http://localhost:3030/edamam/search')
+            .then(res => {
+                console.log(res.data);
+            })
+    }
+
     // function to grab ingredients in the array
     getCurrentList() {
         return this.text.split(',').map(ingredient => ingredient.trim());
@@ -21,26 +32,29 @@ class Homepage extends Component {
         return (
             <div>
                 <Navbar />
-                <h2>Log in or Sign up to save your favorite recipes!</h2>
-                <div style={{ display: 'flex' }}>
+                <div className="main-content">
+                    <h2>Log in or Sign up to save your favorite recipes!</h2>
                     <div>
-                        {/* whatever user enters in input box, it gets valued into text */}
-                        <input 
-                            type="text" 
-                            placeholder="Enter an ingredient" 
-                            onChange={e => this.text = e.target.value} 
-                        />
-                        <button 
-                            onClick={() => this.setState({
-                                ingredients: [...this.state.ingredients, ...this.getCurrentList()]
-                            })}
-                        >
-                            Add to pot!
-                        </button>
+                        <div>
+                            {/* whatever user enters in input box, it gets valued into text */}
+                            <input
+                                type="text"
+                                placeholder="Enter an ingredient"
+                                onChange={e => this.text = e.target.value}
+                            />
+                            <button
+                                onClick={() => this.setState({
+                                    ingredients: [...this.state.ingredients, ...this.getCurrentList()]
+                                })}
+                            >
+                                Add to pot!
+                            </button>
+                            <Pot ingredients={this.state.ingredients} />
+                        </div>
                         <RecipeCard />
                     </div>
-                    <Pot ingredients={this.state.ingredients} />
                 </div>
+                <Footer />
             </div>
         )
     }
