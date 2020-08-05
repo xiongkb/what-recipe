@@ -11,7 +11,7 @@ class Homepage extends Component {
     // constructor prop to set the state of the ingredients that will update the user's input
     constructor(props) {
         super(props);
-        this.state = { ingredients: [] }
+        this.state = { ingredients: [], recipes: [] }
     }
 
     text = '';    // user's text
@@ -21,7 +21,8 @@ class Homepage extends Component {
         this.setState({ ingredients: ingredients });
         axios.post('http://localhost:3030/edamam/search', { ingredients: ingredients})
             .then(res => {
-                console.log(res.data);
+                this.setState({ recipes: res.data.hits.map(recipeList => recipeList.recipe) })
+                console.log(res.data.hits.map(recipeList => recipeList.recipe));
             })
     }
 
