@@ -16,8 +16,10 @@ class Homepage extends Component {
 
     text = '';    // user's text
 
-    componentDidMount()  {
-        axios.get('http://localhost:3030/edamam/search')
+    updateIngredients() {
+        const ingredients = [...this.state.ingredients, ...this.getCurrentList()];
+        this.setState({ ingredients: ingredients });
+        axios.post('http://localhost:3030/edamam/search', { ingredients: ingredients})
             .then(res => {
                 console.log(res.data);
             })
@@ -43,9 +45,7 @@ class Homepage extends Component {
                                 onChange={e => this.text = e.target.value}
                             />
                             <button
-                                onClick={() => this.setState({
-                                    ingredients: [...this.state.ingredients, ...this.getCurrentList()]
-                                })}
+                                onClick={() => this.updateIngredients()}
                             >
                                 Add to pot!
                             </button>
