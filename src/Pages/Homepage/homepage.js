@@ -52,7 +52,7 @@ class Homepage extends Component {
                             </button>
                             <Pot ingredients={this.state.ingredients} />
                         </div>
-                        <RecipeCard />
+                        {this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)}
                     </div>
                 </div>
                 <Footer />

@@ -5,7 +5,8 @@ class RecipeCard extends Component {
     render() {
         return (
             <div>
-                <p>Card for recipe will show here</p>
+                <h4>{this.props.recipe.label}</h4>
+        <p>{this.props.recipe.ingredientLines.map(ingredient => <div>{ingredient}</div>)}</p>
             </div>
         )
     }
