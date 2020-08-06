@@ -65,6 +65,10 @@ class Homepage extends Component {
         }
     }
 
+    clearPan() {
+        this.setState({ ingredients: [], recipes: [], recipeIndex: 0 })
+    }
+
     render() {
         return (
             <div>
@@ -81,7 +85,7 @@ class Homepage extends Component {
                                 onChange={e => this.text = e.target.value}
                             />
                             <button onClick={() => this.updateIngredients()}>Add to pan!</button>
-                            <button onClick={() => this.setState({ ingredients: [] })}>
+                            <button onClick={() => this.clearPan()}>
                                 Clear the pan!
                             </button>
                             <Pot ingredients={this.state.ingredients} />
