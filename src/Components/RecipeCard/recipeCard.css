@@ -1,0 +1,13 @@
+.recipe-card {
+    border: double 3px #ff8801;
+    width: 500px;
+    float:left;
+    margin: 10px;
+}
+.recipe-name {
+    border-bottom: double 3px #ff8801;
+    text-align: center;
+}
+.recipe-ingredients {
+    border-bottom: double 3px #ff8801;
+}

@@ -4,10 +4,16 @@ import  "./recipeCard.css";
 class RecipeCard extends Component {
     render() {
         return (
-            <div>
-                <h4>{this.props.recipe.label}</h4>
-                <p>{this.props.recipe.ingredientLines.map(ingredient => <div>{ingredient}</div>)}</p>
-                <a target="_blank" rel="noopener noreferrer" href={this.props.recipe.url}>Source for Instructions</a>
+            <div className="recipe-card">
+                <h4 className="recipe-name">
+                    {this.props.recipe.label}
+                </h4>
+                <p className="recipe-ingredients">
+                    {this.props.recipe.ingredientLines.map(ingredient => <div>{ingredient}</div>)}
+                </p>
+                <a target="_blank" rel="noopener noreferrer" href={this.props.recipe.url} className="recipe-url">
+                    Source for Instructions
+                </a>
             </div>
         )
     }
