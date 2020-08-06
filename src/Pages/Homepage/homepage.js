@@ -52,6 +52,7 @@ class Homepage extends Component {
                             </button>
                             <Pot ingredients={this.state.ingredients} />
                         </div>
+                        {/* displaying recipe onto browser */}
                         {this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)}
                     </div>
                 </div>
