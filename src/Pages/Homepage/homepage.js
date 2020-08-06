@@ -11,7 +11,11 @@ class Homepage extends Component {
     // constructor prop to set the state of the ingredients that will update the user's input
     constructor(props) {
         super(props);
-        this.state = { ingredients: [], recipes: [] }
+        this.state = {
+            ingredients: [],
+            recipes: [],
+            recipeIndex: 0
+        }
     }
 
     text = '';    // user's text
@@ -31,6 +35,36 @@ class Homepage extends Component {
         return this.text.split(',').map(ingredient => ingredient.trim());
     }
 
+    getDisplayedRecipes() {
+        const recipes = [];
+
+        if (this.state.recipes.length !== 0) {
+            recipes.push(<RecipeCard recipe={this.state.recipes[this.state.recipeIndex]} />);
+        }
+
+        if (this.state.recipes.length > this.state.recipeIndex + 1) {
+            recipes.push(<RecipeCard recipe={this.state.recipes[this.state.recipeIndex + 1]} />);
+        }
+
+        if (this.state.recipes.length > this.state.recipeIndex + 2) {
+            recipes.push(<RecipeCard recipe={this.state.recipes[this.state.recipeIndex + 2]} />);
+        }
+
+        return recipes;
+    }
+
+    moveFoward() {
+        if (this.state.recipeIndex + 3 < this.state.recipes.length) {
+            this.setState({ recipeIndex: this.state.recipeIndex + 3 })
+        }
+    }
+
+    moveBackward() {
+        if (this.state.recipeIndex - 3 >= 0) {
+            this.setState({ recipeIndex: this.state.recipeIndex - 3 })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -45,15 +79,21 @@ class Homepage extends Component {
                                 placeholder="Enter an ingredient"
                                 onChange={e => this.text = e.target.value}
                             />
+                            <button onClick={() => this.updateIngredients()}>Add to pot!</button>
+                            <button disabled={!(this.state.recipeIndex - 3 >=0)}  onClick={() => this.moveBackward()}>
+                                Prev
+                            </button>
                             <button
-                                onClick={() => this.updateIngredients()}
+                                disabled={!(this.state.recipeIndex + 3 < this.state.recipes.length)}
+                                onClick={() => this.moveFoward()}
                             >
-                                Add to pot!
+                                Next
                             </button>
                             <Pot ingredients={this.state.ingredients} />
                         </div>
                         {/* displaying recipe onto browser */}
-                        {this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)}
+                        {/* {this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)} */}
+                        {this.getDisplayedRecipes()}
                     </div>
                 </div>
                 <Footer />
