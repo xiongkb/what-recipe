@@ -23,7 +23,7 @@ class Homepage extends Component {
     updateIngredients() {
         const ingredients = [...this.state.ingredients, ...this.getCurrentList()];
         this.setState({ ingredients: ingredients });
-        axios.post('http://localhost:3030/edamam/search', { ingredients: ingredients})
+        axios.post('http://localhost:3030/edamam/search', { ingredients: ingredients })
             .then(res => {
                 this.setState({ recipes: res.data.hits.map(recipeList => recipeList.recipe) })
                 console.log(res.data.hits.map(recipeList => recipeList.recipe));
@@ -70,30 +70,39 @@ class Homepage extends Component {
             <div>
                 <Navbar />
                 <div className="main-content">
-                    <h2>Log in or Sign up to save your favorite recipes!</h2>
+                    {/* <h2>Log in or Sign up to save your favorite recipes!</h2> */}
+                    <h2>Enter the ingredients you find to look for recipes!</h2>
                     <div>
                         <div>
                             {/* whatever user enters in input box, it gets valued into text */}
                             <input
                                 type="text"
-                                placeholder="Enter an ingredient"
+                                placeholder="Apple, Banana, etc,"
                                 onChange={e => this.text = e.target.value}
                             />
-                            <button onClick={() => this.updateIngredients()}>Add to pot!</button>
-                            <button disabled={!(this.state.recipeIndex - 3 >=0)}  onClick={() => this.moveBackward()}>
-                                Prev
-                            </button>
-                            <button
-                                disabled={!(this.state.recipeIndex + 3 < this.state.recipes.length)}
-                                onClick={() => this.moveFoward()}
-                            >
-                                Next
+                            <button onClick={() => this.updateIngredients()}>Add to pan!</button>
+                            <button onClick={() => this.setState({ ingredients: [] })}>
+                                Clear the pan!
                             </button>
                             <Pot ingredients={this.state.ingredients} />
                         </div>
-                        {/* displaying recipe onto browser */}
-                        {/* {this.state.recipes.map(recipe => <RecipeCard recipe={recipe}/>)} */}
-                        {this.getDisplayedRecipes()}
+
+                        <button 
+                                disabled={!(this.state.recipeIndex - 3 >= 0)} 
+                                onClick={() => this.moveBackward()}
+                            >
+                                Prev
+                        </button>
+                        <button
+                                disabled={!(this.state.recipeIndex + 3 < this.state.recipes.length)}
+                                onClick={() => this.moveFoward()}
+                        >
+                                Next
+                        </button>
+                        <div>
+                            {/* displaying recipe onto browser */}
+                            {this.getDisplayedRecipes()}
+                        </div>
                     </div>
                 </div>
                 <Footer />

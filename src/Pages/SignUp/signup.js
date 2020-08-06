@@ -5,7 +5,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
-                This is the sign up page.
+                <h1>Signup Page under construction!</h1>
             </div>
         )
     }

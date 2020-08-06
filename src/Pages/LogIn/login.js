@@ -5,7 +5,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                This is the log in page.
+                <h1>Login Page under construction!</h1>
             </div>
         )
     }
