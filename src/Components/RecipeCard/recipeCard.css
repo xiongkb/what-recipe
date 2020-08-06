@@ -10,4 +10,14 @@
 }
 .recipe-ingredients {
     border-bottom: double 3px #ff8801;
+    padding: 10px;
+}
+.recipe-url {
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+}
+.recipe-url:hover {
+    background-color: #ff8801;
+    padding: 5px;
 }
