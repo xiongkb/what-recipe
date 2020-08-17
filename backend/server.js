@@ -6,8 +6,14 @@ const cors = require('cors');
 const app = express();
 const edamamApi = require('./Api/edamamApi');
 
+// the auth routes
+const authRoutes = require("./Routes/authRoutes")
+
+// auth routes setup
+app.use("/auth", authRoutes)
+
 // setting server port
-const PORT = 3030
+const PORT = process.env.PORT || 3030
 
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
