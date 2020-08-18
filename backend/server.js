@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3030
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/whatRecipe', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/whatRecipe', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', function() {
     console.log(chalk.green("MongoDB database connection established successfully"));
